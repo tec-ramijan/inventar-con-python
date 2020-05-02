@@ -273,7 +273,7 @@ Hay otros operadores de asignación aumentada. Escriba lo siguiente en la consol
 40
 ```
 
-La expresión `num -= 2` es la misma que `num = num -2`, entonces la expresión primero evalúa `num = 42 - 2` y luego `num = 40`.
+La expresión `spam -= 2` es la misma que `spam = spam -2`, entonces la expresión primero evalúa `spam = 42 - 2` y luego `spam = 40`.
 
 Hay operadores de asignación aumentada para multiplicación y división también:
 
@@ -286,7 +286,7 @@ Hay operadores de asignación aumentada para multiplicación y división tambié
 12.0
 ```
 
-La expresión `num *= 3` es equivalente a `num = num *3`. Entonces, dado que `num` fue asignada con `40` antes, la expresión  completa sería `num = 40*3` que da como resultado `120`. La expresión `num/=10` es equivalente a `num = num/10` y `num=120/10` resulta en `12.0` . Note que `num` es flotante después de ser dividido.
+La expresión `spam *= 3` es equivalente a `spam = spam *3`. Entonces, dado que `spam` fue asignada con `40` antes, la expresión  completa sería `spam = 40*3` que da como resultado `120`. La expresión `spam/=10` es equivalente a `spam = spam/10` y `spam=120/10` resulta en `12.0` . Note que `spam` es flotante después de ser dividido.
 
 ##Calculando las pistas
 
@@ -363,7 +363,7 @@ El método de cadenas de caracteres `join()` devuelve una lista de cadenas como 
 30. 	return ' '.join(pistas)
 ```
 
-La cadena de caracteres con la que el método es invocado (en la línea 30, esto es un espacio sencillo,` ' '`) aparece entre cada String en la lista. Para ver un ejemplo, ingrese lo siguiente en su consola interactiva:
+La cadena de caracteres con la que el método es invocado (en la línea 30, esto es un espacio sencillo,` ' '`) aparece entre cada cadena en la lista. Para ver un ejemplo, ingrese lo siguiente en su consola interactiva:
 
 ```python
 >>> ' '.join(['Mi', 'nombre', 'es', 'Zophie'])
@@ -417,6 +417,19 @@ La invocación a la función `print()`  le dice a la jugadora las reglas del jue
 ## Interpolación de cadenas
 
 La interpolación de cadenas, también llamada formateo de cadenas de es una abreviatura de código. Normalmente, si usted quiere utilizar valores dentro de cadenas, utilizaría el operador de concatenación `+`:
+
+```python
+>>> nombre = 'Alice'
+>>> evento = 'la fiesta'
+>>> ubicacion = 'la piscina'
+>>> dia = 'Sábado'
+>>> hora = '6:00pm'
+>>> print('Hola, ' + nombre + '. ¿Vas a ir a ' + evento + ' en ' +
+ubicacion + ' este ' + dia + ' a las ' + hora + '?')
+Hola, Alice. ¿Vas a ir a la fiesta en la piscina este Sábado a las 6:00pm?
+```
+
+Como puede ver, escribir una cadena que concatene dentro de ella muchas otras cadenas, puede tomar mucho tiempo.  Como alternativa, usted puede usar interpolación de cadenas, que permiten utilizar campos como `%s`  en la cadena. Estos campos se llaman especificadores de conversión. Una vez que usted escribe estos especificadores, puede poner todos los nombres de variable al final de la cadena. Cada `%s` se reemplaza con una variable al dinal de la línea, en el orden en que coloque las variables. por ejemplo, el siguiente código hace lo mismo que el código anterior:
 
 ```python
 >>> nombre = 'Alice'
