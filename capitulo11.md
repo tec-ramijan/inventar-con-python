@@ -2,14 +2,14 @@
 
 ![Imagen de ciencia](https://inventwithpython.com/invent4thed/images/00016.jpeg)
 
-Panecillos es un juego de deducción en el que la jugadora trata de adivinar un número aleatorio de tres dígitos, generado por la computadora y en el que no se repiten digitos. La computadora dará a la jugadora tres tipos de pistas:
+Panecillos es un juego de deducción en el que la jugadora trata de adivinar un número aleatorio de tres dígitos, generado por la computadora y en el que no se repiten dígitos. La computadora dará a la jugadora tres tipos de pistas:
 
 
 * **Panecillos** - Ninguna de las tres cifras del intento está en el número secreto.
 * **Pico** - Una de las cifras está en el número secreto, pero no en el lugar correcto.
 * **Fermi** -El intento tiene una cifra correcta en el lugar correcto.
 
- Después de cada intento se pueden recibir múltiples pistas ordenadas alfabeticamente. Sí el número secreto es 456 y el intento fue 546, la pista será "Fermi Pico Pico". "Fermi" es por el 6 y "pico pico" por el 4 y 5.
+ Después de cada intento se pueden recibir múltiples pistas ordenadas alfabéticamente. Sí el número secreto es 456 y el intento fue 546, la pista será "Fermi Pico Pico". "Fermi" es por el 6 y "pico pico" por el 4 y 5.
 
  En este capítulo usted aprenderá algunos nuevos métodos y funciones de Python. También va a aprender acerca de operadores de asignación aumentada e interpolación de cadenas. A pesar de que no le permiten hace nada que no pudiera hacer antes, son bonitos atajos para hacer la programación más fácil.
 
@@ -65,7 +65,7 @@ no
 
 ## Código fuente de Panecillos
 
-En un archivo nuevo escriba el siguiente código fuente y guardelo como panecillos.py, después ejecute el juego y si tiene errores, compare el código con el código de este libro con la herramienta diff en  *https://www.nostarch.com/inventwithpython#diff*.
+En un archivo nuevo escriba el siguiente código fuente y guárdelo como *panecillos.py*, después ejecute el juego y si tiene errores, compare el código con el código de este libro con la herramienta diff en  *https://www.nostarch.com/inventwithpython#diff*.
 
 ![Pingüino recordando usar Python 3](https://inventwithpython.com/invent4thed/images/00020.jpeg "Pingüino recordando usar Python 3")
 
@@ -160,8 +160,6 @@ El diagrama de flujo de Panecillos es muy simple. La computadora genera un núme
 
 Al inicio del programa importamos el modulo `random`y configuramos algunas variables globales. Luego definiremos una función llamada  `obtenerNumSecreto()`.
 
-*panecillos.py*
-
 ```python
  1. import random
  2.
@@ -172,7 +170,7 @@ Al inicio del programa importamos el modulo `random`y configuramos algunas varia
  7.   	#Devuelve una cadena con digitos únicos de longitud DIGITOSNUM
 ```
 
-En lugar de usar el entero  `3`  para indicar el número de dígitos en la respuesta, utilizamos la constante `DIGITOSNUM`. Lo  mismo aplica para el númeo de intentos que cada jugadora obtiene; utilizamos la constante `MAXINTENTOS` en vez del entero  `10` . Ahora será más fácil cambiar el número de intentos o de dígitos del número secreto. Basta con cambiar los valores en las líneas 3 o 4 y el resto del programa seguirá funcionando sin cambios adicionales. 
+En lugar de usar el entero  `3`  para indicar el número de dígitos en la respuesta, utilizamos la constante `DIGITOSNUM`. Lo  mismo aplica para el número de intentos que cada jugadora obtiene; utilizamos la constante `MAXINTENTOS` en vez del entero  `10` . Ahora será más fácil cambiar el número de intentos o de dígitos del número secreto. Basta con cambiar los valores en las líneas 3 o 4 y el resto del programa seguirá funcionando sin cambios adicionales. 
 
 La función `obtenerNumSecreto()` genera un número secreto que contiene solamente dígitos únicos. El juego de panecillos es mucho más divertido sin números secretos con duplicados como  `244` o  `333` . Pronto vamos a utilizar algunas funciones nuevas de Python para hacer que esto sea posible en  `obtenerNumSecreto()`.
 
@@ -185,9 +183,9 @@ Las primeras dos líneas de mezclan un conjunto de dígitos no repetidos.
  9.		random.shuffle(numeros)
 ```
 
-En la línea 8`list(range(10))` evalúa en  ` [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`   para que la variable `numeros`   contenga una lista con todos los 10 dígitos.
+En la línea 8 `list(range(10))` evalúa en  ` [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`   para que la variable `numeros` contenga una lista con todos los 10 dígitos.
 
-### Cambiando el orden de la lista con la función random.shuffle()
+### Cambiando el orden de la lista con la función *random.shuffle()*
 
 La función cambia el orden de los elementos de la lista de forma aleatoria (en este caso, la lista de dígitos). Esta función no devuelve un valor, sino que modifica la lista que recibe en sí misma. Esto funciona de manera similar a la función  `hacerJugada()` del juego de Tres en Línea en el capítulo10. Esta es la razón por la cual no se escribe`numeros=random.shuffle(numeros)`.  
 
@@ -209,7 +207,7 @@ Experimente con la función `shuffle()` del  escribiendo el siguiente código en
 [9, 8, 3, 5, 4, 7, 1, 2, 0, 6]
 ```
 
-Cada vez que se invoca `random.shuffle()`en `lista`, los elementos de `lista` se mezclan. Ahora ver'a como usamos la función `shuffle()`  para generar un número secreto. 
+Cada vez que se invoca `random.shuffle()` en `lista`, los elementos de `lista` se mezclan. Ahora verá como usamos la función `shuffle()`  para generar un número secreto. 
 
 ###Obteniendo el número secreto de la mezcla de dígitos
 
@@ -226,10 +224,10 @@ La variable`numSecreto` inicia como una cadena en blanco. El ciclo `for` en la l
 
 Por ejemplo, si  `numeros` se refiere a la lista ` [9, 8, 3, 5, 4,  7,  1, 2, 0, 6]` entonces la primera iteración, `numeros[0]` (esto es, 9) será pasado a `str()`; lo que devuelve `9`, que es concatenado al final de `numSecreto`. En la segunda iteración, sucede lo mismo con `numeros[1]` (es decir 8) y en la tercera iteración pasa una vez más con `numeros[2]` (que es 3). El valor final de `numSecreto` es `983`.
 
-Note que `numSecreto` en esta función  contiene una cadena y no un e+ntero. Esto puede parecer extraño, pero recuerde que no se pueden concatenar enteros. La expresión `9+8+3` evalúa a `20` y lo que se quiere es `'9'`+`'8'`+`'3'` que genera `'983'`.
+Note que `numSecreto` en esta función  contiene una cadena y no un entero. Esto puede parecer extraño, pero recuerde que no se pueden concatenar enteros. La expresión `9+8+3` evalúa a `20` y lo que se quiere es `'9'`+`'8'`+`'3'` que genera `'983'`.
 
 ##Operadores de asignación aumentada 
-El operador `+=` en la línea 12 es una de los operadores de asignación aumentada. Normalmente, si se quiere sumar o concatenar un valor a una variables, usted usa código que se ve así.
+El operador `+=` en la línea 12 es una de los operadores de *asignación aumentada*. Normalmente, si se quiere sumar o concatenar un valor a una variables, usted usa código que se ve así.
 ```python
 >>> spam = 42
 >>> spam = spam + 10
@@ -286,7 +284,7 @@ Hay operadores de asignación aumentada para multiplicación y división tambié
 12.0
 ```
 
-La expresión `spam *= 3` es equivalente a `spam = spam *3`. Entonces, dado que `spam` fue asignada con `40` antes, la expresión  completa sería `spam = 40*3` que da como resultado `120`. La expresión `spam/=10` es equivalente a `spam = spam/10` y `spam=120/10` resulta en `12.0` . Note que `spam` es flotante después de ser dividido.
+La expresión `spam *= 3` es equivalente a `spam = spam * 3`. Entonces, dado que `spam` fue asignada con `40` antes, la expresión  completa sería `spam = 40 * 3` que da como resultado `120`. La expresión `spam /= 10` es equivalente a `spam = spam / 10` y `spam= 120 / 10` resulta en `12.0` . Note que `spam` es flotante después de ser dividido.
 
 ##Calculando las pistas
 
@@ -349,11 +347,9 @@ En la línea 29, donde utilizamos `sort()` en `pistas`
 29. 	pista.sort()
 ```
 
-La razón por la cual se requiere ordenar la lista `pistas`  alfabéticamente es para eliminar información que ayudaría a la jugadora a adivinar el número correcto con más facilidad. Si `pistas` fuese `['Pico','Fermi','Pico'] `eso le indicaría a la jugadora que el digito central del intento está en la posición correcta. Ya que las otras dos pistas son `Pico`,  en este caso la jugadora sabría que para ganer bastaría con intercambiar el primer y el tercer dígito.
+La razón por la cual se requiere ordenar la lista `pistas`  alfabéticamente es para eliminar información que ayudaría a la jugadora a adivinar el número correcto con más facilidad. Si `pistas` fuese `['Pico','Fermi','Pico'] ` eso le indicaría a la jugadora que el dígito central del intento está en la posición correcta. Ya que las otras dos pistas son `Pico`,  en este caso la jugadora sabría que para ganar bastaría con intercambiar el primer y el tercer dígito.
 
-SI las reglas siempre están en orden alfabético, la jugadora no puede estar segura de a cuál dígito se refiere `Fermi`. Esto hace al juego más difícil y divertido.
-
-En ese caso, la línea 27 retorna  `Panecillos` como única pista.
+Si las reglas siempre están en orden alfabético, la jugadora no puede estar segura de a cuál dígito se refiere `Fermi`. Esto hace al juego más difícil y divertido.
 
 ## El método de cadenas join()
 
@@ -385,7 +381,7 @@ La función `esSoloDigitos()` ayuda a determinar si la jugadora ingresó un inte
 35.			return False
 ```
 
-La línea 34 verifica si `num` es una cadena de caracteres en blanco, de ser asi, devuelve `False`. El ciclo `for` itera sobre cada caracter de la cadena de caracteres `num`:
+La línea 34 verifica si `num` es una cadena de caracteres en blanco, de ser así, devuelve `False`. El ciclo `for` itera sobre cada caracter de la cadena de caracteres `num`:
 
 ```python
 37.		for i in num:
@@ -397,7 +393,7 @@ La línea 34 verifica si `num` es una cadena de caracteres en blanco, de ser asi
 
 El valor de `i` va a tener un único caracter en cada iteración. Dentro del bloque del `for`, el código verifica si `i` existe en la lista devuelta por `'0 1 2 3 4 5 6 7 8 9'.split()`.(El valor de retorno de `split()` es equivalente a `['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']`). Si `i` no es parte de esa lista, entonces usted sabe que el caracter en `num` no es un dígito.
 
-Pero si la ejecución continua más allá del ciclo `for`, entonces se sabe que cada caracter en `num` es un digito. En ese caso, la línea 41 devuelve `True`.
+Pero si la ejecución continua más allá del ciclo `for`, entonces se sabe que cada caracter en `num` es un dígito. En ese caso, la línea 41 devuelve `True`.
 
 ## Iniciando el juego
 
@@ -538,7 +534,7 @@ La línea 70 pregunta a la jugadora si quiere jugar de nuevo:
 
 La función `input()` obtiene la respuesta, sobre la cual se invoca primero al método `lower()`y después a `startswith()` para verificar si la respuesta empieza con una `s`. Si no, el programa se sale del ciclo `while` que se inició en la línea 51. Debido a que no hay más código después de ese ciclo, el programa termina su ejecución.
 
-Si la respuesta termina con una `s`, el programa no ejecuta el `break` y la ejecución vuelve de regreso a la línea 51. EL programa genera un nuevo número secreto para que sea posible jugar un juego nuevo.
+Si la respuesta termina con una `s`, el programa no ejecuta el `break` y la ejecución vuelve de regreso a la línea 51. El programa genera un nuevo número secreto para que sea posible jugar un juego nuevo.
 
 ## Resumen
 
@@ -547,3 +543,5 @@ Panecillos es un juego simple de programar pero puede ser difícil de ganar. Per
 Este capítulo se introdujeron algunas nuevas funciones y métodos - `shuffle()`, `sort()` y `join()`-, junto con un par de atajos. Los operadores de asignación aumentada requieren escribir menos cuando se quiere cambiar el valor relativo de una variable, tal como en `spam = spam + 1`, que puede abreviarse como `spam += 1`. La interpolación de cadenas puede hacer que el código sea mucho más legible colocando `%s` (*llamado especificador de conversión*) dentro de la cadena en lugar de usar muchas operaciones de concatenación de cadenas.
 
 El siguiente capítulo no nos enfocaremos en programar pero sí en conceptos - Cordenadas cartesianas y números negativos - que serán necesarios para los juegos de los siguientes capítulos del libro. Estos conceptos matemáticos no solamente son utilizados en en los juegos Sonar, Reversi y Evasor, sino además en muchos otros juegos. Si ya conoce estos conceptos, igual puede hojear el siguiente capítulo para refrescarlos.
+
+[Previo: Capítulo 10: Tres en línea ](capitulo10.md) | [Siguiente: Capítulo 12: El sistema de coordenadas cartesianas](capitulo12.md)
